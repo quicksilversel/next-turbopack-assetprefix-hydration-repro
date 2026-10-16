@@ -1,0 +1,12 @@
+/node_modules
+npm-debug.log*
+
+# Ignore the build output EXCEPT .next/static, which must be committed so
+# jsDelivr can serve it as the cross-origin CDN.
+/.next/*
+!/.next/static
+!/.next/static/**
+
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
