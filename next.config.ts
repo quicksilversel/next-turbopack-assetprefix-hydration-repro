@@ -1,16 +1,16 @@
 import type { NextConfig } from 'next'
 
 /**
- * Serve _next/static from a cross-origin public CDN (jsDelivr) to reproduce the bug.
- * Set CDN_URL at build AND start, e.g.
- *   CDN_URL=https://cdn.jsdelivr.net/gh/<user>/<repo>@main
- * Leave CDN_URL unset to serve same-origin (the working control).
+ * assetPrefix is read from CDN_URL.
+ *
+ * The bug: `next build` WITHOUT CDN_URL (empty assetPrefix), then run the server
+ * WITH a cross-origin CDN_URL (assetPrefix set at runtime). Under Turbopack the
+ * page never hydrates. Under webpack it hydrates. Building WITH CDN_URL (baked)
+ * also hydrates.
  */
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   assetPrefix: process.env.CDN_URL ?? '',
-  // Mirrors the affected production app. Does NOT fix the issue (included to show that).
-  crossOrigin: 'anonymous',
 }
 
 export default nextConfig
