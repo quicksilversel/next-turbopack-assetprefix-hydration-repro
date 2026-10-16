@@ -29,7 +29,7 @@ export default function Home({
         {hydrated ? '✅ Hydrated' : '⏳ Not hydrated (SSR HTML only)'}
       </h1>
       <p>Server-rendered at: {renderedAt}</p>
-      <button type="button" onClick={() => alert('clicked — client JS works')}>
+      <button type="button" onClick={() => alert('clicked, client JS works')}>
         Click me
       </button>
       <p>

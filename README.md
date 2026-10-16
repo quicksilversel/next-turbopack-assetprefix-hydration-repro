@@ -16,7 +16,7 @@ so does a Turbopack build where the same `assetPrefix` **was** set at build time
 | **webpack**, **no** `CDN_URL` | **with** cross-origin `CDN_URL` | ✅ hydrates |
 
 In the failing case **every chunk still loads (HTTP 200) with no console or CORS
-errors** — the SSR HTML renders but React never attaches (`#__next` gets no React
+errors**, the SSR HTML renders but React never attaches (`#__next` gets no React
 root, `useEffect` never runs, buttons are dead).
 
 The takeaway: **Turbopack bakes the build-time `assetPrefix` into the client
