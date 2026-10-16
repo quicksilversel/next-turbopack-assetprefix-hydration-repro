@@ -43,10 +43,12 @@ CDN_URL=https://cdn.jsdelivr.net/gh/quicksilversel/next-turbopack-assetprefix-hy
 
 ### 3. Publish `_next/static` to the CDN
 
-Commit the build's static assets and push to the public repo so jsDelivr can
-serve them (the `.gitignore` keeps `.next/static` and ignores the rest of `.next`):
+Next serves chunks at `/_next/static/...`, but the build dir is `.next/static`,
+so copy the static assets to `_next/static` at the repo root (that's what
+jsDelivr will serve). Then commit and push:
 
 ```bash
+rm -rf _next && cp -r .next/static _next/static
 git add -A
 git commit -m "repro build"
 git push

@@ -1,11 +1,11 @@
 /node_modules
 npm-debug.log*
 
-# Ignore the build output EXCEPT .next/static, which must be committed so
-# jsDelivr can serve it as the cross-origin CDN.
-/.next/*
-!/.next/static
-!/.next/static/**
+# Real Next build dir is ignored; we instead commit a copy of the static assets
+# under /_next/static so jsDelivr serves them at the path Next requests
+# ({CDN_URL}/_next/static/...). Regenerate with:
+#   npm run build && rm -rf _next && cp -r .next/static _next/static
+/.next
 
 next-env.d.ts
 *.tsbuildinfo
